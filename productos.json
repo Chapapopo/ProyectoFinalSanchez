@@ -1,0 +1,214 @@
+[
+    
+    {
+        "id": 1,
+        "Demo": "todo",
+        "Modelo": "Poster",
+        "Precio": 10000,
+        "Imagen": "01.jpg"
+    },
+    {
+        "id": 2,
+        "Demo": "todo",
+        "Modelo": "Poster",
+        "Precio": 10000,
+        "Imagen": "02.jpg"
+    },
+    {
+        "id": 3,
+        "Demo": "todo",
+        "Modelo": "Poster",
+        "Precio": 10000,
+        "Imagen": "03.jpg"
+    },
+    {
+        "id": 4,
+        "Demo": "todo",
+        "Modelo": "Poster",
+        "Precio": 10000,
+        "Imagen": "04.jpg"
+    },
+    {
+        "id": 5,
+        "Demo": "todo",
+        "Modelo": "Poster",
+        "Precio": 10000,
+        "Imagen": "05.jpg"
+    },
+    {
+        "id": 6,
+        "Demo": "todo",
+        "Modelo": "Poster",
+        "Precio": 10000,
+        "Imagen": "06.jpg"
+    },
+    {
+        "id": 7,
+        "Demo": "Hombre",
+        "Modelo": "Dual",
+        "Precio": 10600,
+        "Imagen": "Dual.webp"
+    },
+    {
+        "id": 8,
+        "Demo": "Hombre",
+        "Modelo": "Power",
+        "Precio": 13400,
+        "Imagen": "Power.webp"
+    },
+    {
+        "id": 9,
+        "Demo": "Hombre",
+        "Modelo": "Power Ligth",
+        "Precio": 9700,
+        "Imagen": "PowerLigth.webp"
+    },
+    {
+        "id": 10,
+        "Demo": "Hombre",
+        "Modelo": "Top",
+        "Precio": 5500,
+        "Imagen": "Top.webp"
+    },
+    {
+        "id": 11,
+        "Demo": "Hombre",
+        "Modelo": "Top Basic",
+        "Precio": 7900,
+        "Imagen": "TopBasic.webp"
+    },
+    {
+        "id": 12,
+        "Demo": "Hombre",
+        "Modelo": "Top Slice",
+        "Precio": 8400,
+        "Imagen": "TopSlice.webp"
+    },
+    {
+        "id": 12,
+        "Demo": "Hombre",
+        "Modelo": "Urban Blend",
+        "Precio": 13600,
+        "Imagen": "UrbanBlend.webp"
+    },
+    {
+        "id": 13,
+        "Demo": "Hombre",
+        "Modelo": "Hybrid Free",
+        "Precio": 10200,
+        "Imagen": "HybridFree.webp"
+    },
+    {
+        "id": 14,
+        "Demo": "Mujer",
+        "Modelo": "Flash Urban",
+        "Precio": 8800,
+        "Imagen": "FlashUrban.webp"
+    },
+    {
+        "id": 15,
+        "Demo": "Mujer",
+        "Modelo": "Luna",
+        "Precio": 11600,
+        "Imagen": "Luna.webp"
+    },
+    {
+        "id": 16,
+        "Demo": "Mujer",
+        "Modelo": "Slim",
+        "Precio": 7000,
+        "Imagen": "Slim.webp"
+    },
+    {
+        "id": 17,
+        "Demo": "Mujer",
+        "Modelo": "Slim Plataform",
+        "Precio": 11700,
+        "Imagen": "SlimPlataform.webp"
+    },
+    {
+        "id": 18,
+        "Demo": "Mujer",
+        "Modelo": "Sweet",
+        "Precio": 4300,
+        "Imagen": "Sweet.webp"
+    },
+    {
+        "id": 19,
+        "Demo": "Mujer",
+        "Modelo": "Wadges",
+        "Precio": 15300,
+        "Imagen": "Wadges.webp"
+    },
+    {
+        "id": 20,
+        "Demo": "Mujer",
+        "Modelo": "You Angra",
+        "Precio": 10600,
+        "Imagen": "YouAngra.webp"
+    },
+    {
+        "id": 21,
+        "Demo": "Bebe",
+        "Modelo": "BB Disney",
+        "Precio": 7800,
+        "Imagen": "BBDisney.webp"
+    },
+    {
+        "id": 22,
+        "Demo": "Bebe",
+        "Modelo": "BB Logomania",
+        "Precio": 5500,
+        "Imagen": "BBLogomania.webp"
+    },
+    {
+        "id": 23,
+        "Demo": "Bebe",
+        "Modelo": "BB Palette Glow",
+        "Precio": 7800,
+        "Imagen": "BBPaletteGlow.webp"
+    },
+    {
+        "id": 24,
+        "Demo": "Infante",
+        "Modelo": "K Grafity",
+        "Precio": 8000,
+        "Imagen": "KGrafity.webp"
+    },
+    {
+        "id": 25,
+        "Demo": "Infante",
+        "Modelo": "K Max",
+        "Precio": 6600,
+        "Imagen": "KMax.webp"
+    },
+    {
+        "id": 26,
+        "Demo": "Infante",
+        "Modelo": "K Max Heroes",
+        "Precio": 8000,
+        "Imagen": "KMaxHeroes.webp"
+    },
+    {
+        "id": 27,
+        "Demo": "Infante",
+        "Modelo": "K Slim Glitter",
+        "Precio": 9200,
+        "Imagen": "KSlimGlitter.webp"
+    },
+    {
+        "id": 28,
+        "Demo": "Infante",
+        "Modelo": "K Slim Glitter2",
+        "Precio": 10200,
+        "Imagen": "KSlimGlitter2.webp"
+    },
+    {
+        "id": 29,
+        "Demo": "Infante",
+        "Modelo": "K Top Flores",
+        "Precio": 6000,
+        "Imagen": "KTopFlores.webp"
+    }
+
+]

@@ -1,4 +1,3 @@
-//creo el modelo de los objetos
 class ojota{
     constructor(id, Demo, Modelo, Precio, Imagen){
        this.id = id,
@@ -8,69 +7,76 @@ class ojota{
        this.Imagen = Imagen
     }
  }
+ //Instanciación de objetos: 
+//  const libro1 = new Libro(1,"Jorge Luis Borges", "Aleph", 800, "AlephBorges.jpg")
+ 
+//  const libro2 = new Libro(2,"Gabriel García Marquez", "Cien años de Soledad", 4500, "CienSoledadMarquez.jpg")
+ 
+//  const libro3 = new Libro(3,"Isabel Allende", "Paula", 2800, "PaulaAllende.jpg")
 
-  //Instanciación de objetos: 
+//  const libro4 = new Libro(4,"Jorge Luis Borges","Ficciones", 1400, "FiccionesBorges.jpg")
+ 
+//  const libro5 = new Libro(5,"Mario Benedetti", "Andamios", 2200, "AndamiosBenedetti.jpg")
 
-    const ojota1 = new ojota(1,"Hombre", "Top", 2000, "Top.webp")
-    
-    const ojota2 = new ojota(2,"Mujer", "Slim", 3000, "Slim.webp")
-    
-    const ojota3 = new ojota(3,"Hombre", "Power", 5000, "Power.webp")
-    
-    const ojota4 = new ojota(4,"Bebe","BB Disney", 4500, "BBDisney.webp")
-    
-    const ojota5 = new ojota(5,"Infante", "Kids Slim Glitter", 5500, "KSlimGlitter.webp")
-    
-    const ojota6 = new ojota(6,"Infante", "kid Grafity", 4000, "KGrafity.webp")
+//  const libro6 = new Libro(6,"Mario Vargas Llosa", "La ciudad y los perros", 2800, "CiudadPerrosVargasLlosa.jpg")
 
-    const ojota7 = new ojota(7,"Hombre", "Dual", 4800, "Dual.webp")
-    
-    const ojota8 = new ojota(8,"Bebe","BB Logomania", 4500, "BBLogomania.webp")
+//carga con fetch de nuestra estanteria
+//URL DEL FETCH (NO ES DESDE EL JS AL JSON, SINO DEL HTML AL JSON)
+// function cargarLibros(array){
+//     fetch("libros.json")
+//     .then((resp)=>resp.json())
+//     .then((dataLibro) => {
+//         //dataLibro es mi array con la info del .json
+//         for(let book of dataLibro){
+//             let libronuevo = new Libro (book.id, book.autor, book.titulo, book.precio, book.imagen)
+//             array.push(libronuevo)
+//         }
+//         localStorage.setItem("estanteria", JSON.stringify(array))
 
-    const ojota9 = new ojota(9,"Bebe","BB Palette Glow", 4500, "BBPaletteGlow.webp")
-    
-    const ojota10 = new ojota(10,"Mujer", "Flash Urban", 3000, "FlashUrban.webp")
+//     })
+//     return array
+// }
+//cargar
+const cargarStock = async () =>{
+    const resp = await fetch("productos.json")
+    const dataProducto = await resp.json()
+    for(let OJOTAS of dataProducto){
+        let productonuevo = new ojota (OJOTAS.id, OJOTAS.Demo, OJOTAS.Modelo, OJOTAS.Precio, OJOTAS.Imagen)
+        Stock.push(productonuevo)
+    }
+    localStorage.setItem("Stock", JSON.stringify(Stock))
+}
 
-    const ojota11 = new ojota(11,"Mujer", "Luna", 3000, "Luna.webp")
-    
-    const ojota12 = new ojota(12,"Mujer", "Slim Plataform", 6000, "SlimPlataform.webp")
 
-    const ojota13 = new ojota(13,"Mujer", "Sweet", 3000, "Sweet.webp")
-
-    const ojota14 = new ojota(14,"Mujer", "Wadges", 3000, "Wadges.webp")
-
-    const ojota15 = new ojota(15,"Mujer", "You Angra", 3000, "YouAngra.webp")
-
-    const ojota16 = new ojota(16,"Infante", "Kid Max", 4000, "KMax.webp")
-
-    const ojota17 = new ojota(17,"Hombre", "HybridFree", 4800, "HybridFree.webp")
-    
-    const ojota18 = new ojota(18,"Infante","Kid Max Heroes", 4500, "KMaxHeroes.webp")
-
-    const ojota19 = new ojota(19,"Infante","Kid Slim Glitter 2", 4500, "KSlimGlitter2.webp")
-    
-    const ojota20 = new ojota(20,"Hombre", "Power Ligth", 3000, "PowerLigth.webp")
-
-    const ojota21 = new ojota(21,"Hombre", "poster", 500000000000, "R.jpg")
+//function para cargar los libros desde el JSON con async await
 
  //arrays de objetos:
- let Stock = []
-
- //pregunto si tengo stock en el sistema
- if(localStorage.getItem("Stock")){
-    //lo treigo 
+ //es preguntar si estanteria existe en el storage:
+ //si existe, hay info cargada
+ 
+let Stock = []
+if(localStorage.getItem("Stock")){
+     
+     // estanteria = JSON.parse(localStorage.getItem("estanteria"))
+     //hacer for of de estanteria y pasarle new Libro
     for(let OJOTAS of JSON.parse(localStorage.getItem("Stock"))){
         let ojotaStorage = new ojota (OJOTAS.id, OJOTAS.Demo, OJOTAS.Modelo, OJOTAS.Precio, OJOTAS.Imagen)
         Stock.push(ojotaStorage)
     }
 
 }else{
-    //Lo seteo por primera ves
+    //no existe seteamos porprimera vez
     console.log("seteamos por primera vez")
-    Stock.push(ojota1,ojota2,ojota3,ojota4,ojota5,ojota6,ojota7,ojota8,ojota9,ojota10,ojota11,ojota12,ojota13,ojota14,ojota15,ojota16,ojota17,ojota18,ojota19,ojota20,ojota21)
-    localStorage.setItem("Stock", JSON.stringify(Stock))
-}
+    // estanteria.push(libro1,libro2,libro3,libro4,libro5,libro6)
+    // localStorage.setItem("estanteria", JSON.stringify(estanteria))
+    // estanteria = cargarLibros(estanteria)
+    // console.log(estanteria)
 
+    //FUNCTION ASYNC para cargar libros
+    cargarStock()
+    
+}
 //setear productosCarrito con operador Nullish
+//pasarle class a lo quye capturamos del carrito
 let productosCarrito = JSON.parse(localStorage.getItem("carrito")) ?? []
-console.log(productosCarrito)
+

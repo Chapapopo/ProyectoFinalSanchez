@@ -1,12 +1,12 @@
 .Fondo{
-    background-image: url(../images/ploter/light.jpg);
+    background-image: url(../images/logo/light.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
 }
 .FondoOscuro{
-    background-image: url(../images/ploter/dark.jpg);
+    background-image: url(../images/logo/dark.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;

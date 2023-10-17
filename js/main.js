@@ -23,11 +23,12 @@ function mostrarCatalogo(array){
         ojotaNuevaDiv.className = "col-12 col-md-6 col-lg-3 my-2"
         ojotaNuevaDiv.innerHTML = `
             <div id="${ojota.id}" class="card" style="width: 18rem;">
-                    <img class="card-img-top img-fluid" style="height: auto;"src="Imagenes/${ojota.Imagen}" alt="${ojota.Modelo}">
+                    <img class="card-img-top img-fluid" style="height: auto;"src="images/productos/${ojota.Imagen}" alt="${ojota.Modelo}">
                     <div class="card-body">
                         <h4 class="card-title"></h4>
                         <p>Modelo: ${ojota.Modelo}</p>
                         <p>Precio: ${ojota.Precio}</p>
+                        <p>Precio tarjeta: ${precioTarjeta(ojota.Precio)}</p>
                         <button id="agregarBtn${ojota.id}" class="btn btn-outline-success">Agregar al carrito</button>
                     </div>
             </div> `
@@ -62,7 +63,7 @@ function cargarProductosCarrito(array){
                  <img class="card-img-top" height=auto src="Imagenes/${productoCarrito.Imagen}" alt="">
                  <div class="card-body">
                         <h4 class="card-title">${productoCarrito.Modelo}</h4>
-                         <p class="card-text">$${productoCarrito.Precio}</p> 
+                         <p class="card-text">$${productoCarrito.Precio} $${precioTarjeta(productoCarrito.Precio)}</p> 
                          <button class= "btn btn-danger" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"></i></button>
                  </div>    
             </div>
@@ -70,17 +71,22 @@ function cargarProductosCarrito(array){
         }
     )
     //voy a calcular el total de la compra
-    calcularTotal(array)    
+    calcularTotal(array) 
 }
 
-//Funcion para calcular el totol
+//Funcion para calcular el total
 function calcularTotal(array){    
     const totalReduce = array.reduce(
         (acumulador, ojota)=>
         {return acumulador + ojota.Precio},
         0
     )
-    totalReduce > 0 ? precioTotal.innerHTML = `<strong>El total de su compra es: ${totalReduce}</strong>` : precioTotal.innerHTML = `No hay productos en el carrito`
+    const totalReduce1 = array.reduce(
+        (acumulador, ojota)=>
+        {return acumulador + precioTarjeta(ojota.Precio)},
+        0
+    )
+    totalReduce > 0 ? precioTotal.innerHTML = `<strong>El total de su compra es: $${totalReduce} en efectivo o $${totalReduce1} con tarjeta</strong>` : precioTotal.innerHTML = `No hay productos en el carrito`
 }
 
 //funcion para buscar una ojota en particular por modelo
@@ -135,6 +141,15 @@ function FiltrarDemografia(x,Stock) {
       })
       mostrarCatalogo(arrayfiltrado)
 }
+
+function precioTarjeta(precio){
+    precio = precio * 1.2
+    return redondear(precio)
+}
+
+function redondear(numero) {
+    return Math.round(numero / 100) * 100;
+  }
 
 //codigo 
 mostrarCatalogo(Stock)
