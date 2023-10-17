@@ -52,12 +52,32 @@ function agregarAlCarrito(elemento){
     //Preguto si la nueva ojota esta en el array
     
     let ojotaAgregada = productosCarrito.find((ojota) => ojota.id == elemento.id)
+    
     ojotaAgregada == undefined ?  
             (//pongo el elemento en el carrito:
             productosCarrito.push(elemento),
             //setStorage
-            localStorage.setItem("carrito", JSON.stringify(productosCarrito))) :
-            console.log(`La ojota ${elemento.Modelo} ya existe en el carrito`)
+            localStorage.setItem("carrito", JSON.stringify(productosCarrito)),
+            Toastify({
+                text: `El producto ${elemento.Modelo} ha sido sumado al carrito`,
+                duration: 3000,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+              }).showToast()) :
+              Toastify({
+                text: `El libro ${elemento.Modelo} ya existe en el carrito`,
+                duration: 2500,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                style: {
+                  background: "linear-gradient(to right, red, orange)",
+                  color: "black",
+                  fontWeight: "bold"
+                },
+              }).showToast()   
 }
 
 //creo los el elemento en el carrito
@@ -77,6 +97,26 @@ function cargarProductosCarrito(array){
             `
         }
     )
+    //segundo for each quiero adjuntar evento eliminar
+    array.forEach(
+        (productoCarrito) => {
+            //similar let btnBorrar = document.getElementById(`botonEliminar${productoCarrito.id}`)
+            //capturar nodo sin guardarlo en variable:
+            document.getElementById(`botonEliminar${productoCarrito.id}`).addEventListener("click", () =>{
+                //borrar del DOM
+                let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
+                cardProducto.remove()
+                //borrar del array
+                //obtener posición del elemento y lo borro
+                let posicion = array.indexOf(productoCarrito)
+                array.splice(posicion, 1)
+                //borrar del storage
+                localStorage.setItem("carrito", JSON.stringify(array))
+                //actualizamos el total
+                calcularTotal(array) 
+            })
+        }
+    )
     //voy a calcular el total de la compra
     calcularTotal(array) 
 }
@@ -94,6 +134,7 @@ function calcularTotal(array){
         0
     )
     totalReduce > 0 ? precioTotal.innerHTML = `<strong>El total de su Pedido es: $${totalReduce} en efectivo o $${totalReduce1} con tarjeta</strong>` : precioTotal.innerHTML = `No hay productos en el carrito`
+    return [totalReduce, totalReduce1];
 }
 
 //funcion para buscar una ojota en particular por modelo
@@ -106,6 +147,19 @@ function buscarInfo(buscado,array){
     )
     coincidencias.length > 0 ? (mostrarCatalogo(coincidencias), coincidenciasDiv.innerHTML ="") : (mostrarCatalogo(array), coincidenciasDiv.innerHTML = `<h3>No hay coincidencias con su búsqueda, este es nuestro catálogo completo</h3>`) 
 }
+
+function finalizarCompra(array){
+    //alguna alerta nos diga que finalizo (con el .then agregamos confirmar compra)
+    const [total, total1] = calcularTotal(array);
+    Swal.fire({
+        text: `su pedido se a realizado con esxito, el total es de ${total} en efectivo o ${total1} con tarjeta`
+    })
+    //limpiar el carrito (desp mejoramos forma)
+    productosCarrito = []
+    //actualizar storage
+    localStorage.removeItem("carrito")
+}
+
 //EVENTO:
 buscador.addEventListener("input", () => {
     console.log(buscador.value)
@@ -138,6 +192,9 @@ selectOrden.addEventListener("change", () => {
 //Boton carrito
 botonCarrito.addEventListener("click", () => {
     cargarProductosCarrito(productosCarrito)
+})
+botonFinalizarCompra.addEventListener("click", () =>{
+    finalizarCompra(productosCarrito)
 })
 
 //Funcion de filtrado
