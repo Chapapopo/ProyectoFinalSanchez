@@ -9,12 +9,18 @@ let coincidenciasDiv = document.getElementById("coincidencias")
 let modalBodyCarrito = document.getElementById("modal-bodyCarrito")
 let botonCarrito = document.getElementById("botonCarrito")
 let precioTotal = document.getElementById("precioTotal")
+let botonFinalizarCompra = document.getElementById(`botonFinalizarCompra`)
+let fechaDiv =document.getElementById("fecha")
+let loaderTexto = document.getElementById("loaderTexto")
+let loader = document.getElementById("loader")
 
 //Funciones 
 
 //Funcion principal
 function mostrarCatalogo(array){
     //inicio con el catalogo limpio
+    
+    
     containerOjotas.innerHTML = ""
     //recorro el array
     for(let ojota of array){
@@ -44,6 +50,7 @@ function mostrarCatalogo(array){
 //Agrego a la compra
 function agregarAlCarrito(elemento){
     //Preguto si la nueva ojota esta en el array
+    
     let ojotaAgregada = productosCarrito.find((ojota) => ojota.id == elemento.id)
     ojotaAgregada == undefined ?  
             (//pongo el elemento en el carrito:
@@ -86,7 +93,7 @@ function calcularTotal(array){
         {return acumulador + precioTarjeta(ojota.Precio)},
         0
     )
-    totalReduce > 0 ? precioTotal.innerHTML = `<strong>El total de su compra es: $${totalReduce} en efectivo o $${totalReduce1} con tarjeta</strong>` : precioTotal.innerHTML = `No hay productos en el carrito`
+    totalReduce > 0 ? precioTotal.innerHTML = `<strong>El total de su Pedido es: $${totalReduce} en efectivo o $${totalReduce1} con tarjeta</strong>` : precioTotal.innerHTML = `No hay productos en el carrito`
 }
 
 //funcion para buscar una ojota en particular por modelo
@@ -142,14 +149,25 @@ function FiltrarDemografia(x,Stock) {
       mostrarCatalogo(arrayfiltrado)
 }
 
+//funcion para el precio con tarjeta
 function precioTarjeta(precio){
     precio = precio * 1.2
     return redondear(precio)
 }
 
+//funcion para redondera (no quiero decenas)
 function redondear(numero) {
     return Math.round(numero / 100) * 100;
   }
 
 //codigo 
-mostrarCatalogo(Stock)
+
+/* setTimeout(()=>{
+    mostrarCatalogo(Stock)
+},1500) */
+
+setTimeout(()=>{
+    loaderTexto.innerText = ``
+    loader.remove()
+    mostrarCatalogo(Stock)
+},2500)
