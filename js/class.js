@@ -1,11 +1,3 @@
-/* ,
-    {
-        "id": 30,
-        "Demo": "nreldrnbhd",
-        "Modelo": "fgyjyj",
-        "Precio": 1200000000,
-        "Imagen": "basico.webp"
-    } */
 class ojota{
     constructor(id, Demo, Modelo, Precio, Imagen){
        this.id = id,

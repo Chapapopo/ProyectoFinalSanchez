@@ -18,7 +18,3 @@ main {
     margin: 0;
     padding: 0;
   }
-
-  .custom-spinner .spinner-border {
-    color: #ff0000; /* Cambia el color a rojo (#ff0000) */
-  }
